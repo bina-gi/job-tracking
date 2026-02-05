@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
 
-export interface Iboard extends Document {
+export interface IBoard extends Document {
   name: string;
   userId: string;
   columns: mongoose.Types.ObjectId[];
@@ -8,7 +8,7 @@ export interface Iboard extends Document {
   updatedAt: Date;
 }
 
-const boardSchema = new Schema<Iboard>(
+const boardSchema = new Schema<IBoard>(
   {
     name: {
       type: String,

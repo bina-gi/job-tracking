@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
 
-export interface IColumn extends Document {
+export interface IJobApplication extends Document {
   company: string;
   position: string;
   location: string;
@@ -19,15 +19,39 @@ export interface IColumn extends Document {
   updatedAt: Date;
 }
 
-const columnSchema = new Schema<IColumn>(
+const jobApplicationSchema = new Schema<IJobApplication>(
   {
-    name: {
+    company: {
       type: String,
       required: true,
+    },
+    position: {
+      type: String,
+      required: true,
+    },
+    location: {
+      type: String,
+      required: true,
+    },
+    status: {
+      type: String,
+      required: true,
+      default: "applied",
+    },
+    columnId: {
+      type: Schema.Types.ObjectId,
+      ref: "Column",
+      required: true,
+      index: true,
     },
     boardId: {
       type: Schema.Types.ObjectId,
       ref: "Board",
+      required: true,
+      index: true,
+    },
+    userId: {
+      type: String,
       required: true,
       index: true,
     },
@@ -36,14 +60,28 @@ const columnSchema = new Schema<IColumn>(
       required: true,
       default: 0,
     },
-    jobApplications: [
+    notes: {
+      type: String,
+    },
+    salary: {
+      type: String,
+    },
+    jobUrl: {
+      type: String,
+    },
+    applicationDate: {
+      type: Date,
+    },
+    tags: [
       {
-        type: Schema.Types.ObjectId,
-        ref: "JobApplication",
+        type: String,
       },
     ],
+    description: {
+      type: String,
+    },
   },
   { timestamps: true },
 );
-export default mongoose.models.Column ||
-  mongoose.model<IColumn>("Column", columnSchema);
+export default mongoose.models.JobApplication ||
+  mongoose.model<IJobApplication>("JobApplication", jobApplicationSchema);
