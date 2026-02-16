@@ -13,7 +13,7 @@ export async function initializeUserBoard(userId: string) {
   try {
     await connectDB();
     // Check if the user already has a board
-    const existingBoard = await Board.findOne({ userId, name: "Job Hunt" });
+    const existingBoard = await Board.findOne({ userId, name: "Job Hunt" }).populate("columns");
     if (existingBoard) {
       return existingBoard;
     }
@@ -39,6 +39,7 @@ export async function initializeUserBoard(userId: string) {
 
     return board;
   } catch (err) {
+    console.error("Error in initializeUserBoard:", err);
     throw err;
   }
 }
