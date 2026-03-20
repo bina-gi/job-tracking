@@ -25,6 +25,9 @@ export async function createJobApplication(data: JobApplicationData) {
   }
 
   await connectDB();
+
+  
+  
   const {
     company,
     position,
@@ -38,6 +41,7 @@ export async function createJobApplication(data: JobApplicationData) {
     description,
   } = data;
 
+  
   if (!company || !position || !columnId || !boardId) {
     return { error: "Missing requierd fields" };
   }

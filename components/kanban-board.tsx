@@ -94,7 +94,7 @@ function DroppableColumn({
       </CardHeader>
       <CardContent className="space-y-2 bg-gray-50/50 min-h-100 rounded-b-lg">
 
-<CreateApplicationJobDialog columanId={column._id} boardId={boardId}/>
+<CreateApplicationJobDialog columnId={column._id} boardId={boardId}/>
       </CardContent>
     </Card>
   );
@@ -104,7 +104,7 @@ export default function KanbanBoard({ board, userId }: KanbanBoardprops) {
   const columns = board.columns;
   return (
     <div>
-      <div>
+      <div className="flex gap-6 overflow-x-scroll">
         {columns.map((col, key) => {
           const config = COLUMN_CONFIG[key] || {
             color: "bg-gray-500",

@@ -87,7 +87,7 @@ function CreateApplicationJobDialog({
           <DialogTitle>Add Job Applications</DialogTitle>
           <DialogDescription>Track a new job application</DialogDescription>
         </DialogHeader>
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleSubmit}>
           <div className="space-y-4">
             <div className="grid grid-cols-2">
               <div className="space-y-2">

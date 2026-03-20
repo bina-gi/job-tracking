@@ -11,7 +11,7 @@ declare global {
   var mongoose: MongooseCache | undefined;
 }
 
-let cached: MongooseCache = global.mongoose || { conn: null, promise: null };
+const cached: MongooseCache = global.mongoose || { conn: null, promise: null };
 
 if (!global.mongoose) {
   global.mongoose = cached;
@@ -23,6 +23,10 @@ async function connectDB() {
       "Please define the MONGODB_URL environment variable inside .env",
     );
   }
+
+  mongoose.connect(MONGODB_URL)
+  .then(() => console.log("Connected to MongoDB"))
+  .catch(err => console.error(err));
 
   if (cached.conn) {
     return cached.conn;
