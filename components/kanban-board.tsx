@@ -81,7 +81,7 @@ function DroppableColumn({
                 size="icon"
                 className="h-6 w-6 text-white hover:bg-white/20"
               >
-                <MoreVertical  className="h-4 w-4"/>
+                <MoreVertical className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
@@ -93,8 +93,7 @@ function DroppableColumn({
         </div>
       </CardHeader>
       <CardContent className="space-y-2 bg-gray-50/50 min-h-100 rounded-b-lg">
-
-<CreateApplicationJobDialog columnId={column._id} boardId={boardId}/>
+        <CreateApplicationJobDialog columnId={column._id} boardId={boardId} />
       </CardContent>
     </Card>
   );
